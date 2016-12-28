@@ -1,0 +1,23 @@
+.data
+
+.text
+	main:
+		
+		#by convention, we use $a0-$a3 as arguments:
+		addi $a1, $zero, 50
+		addi $a2, $zero, 100
+		
+		jal addNumbers
+		
+		#print result (which is 50):
+		li $v0, 1
+		move $a0, $v1
+		syscall
+		#Finish program:
+	li $v0, 10
+	syscall
+		
+	addNumbers:
+		#by convention, we use $v0/$v1 for return values:
+		add $v1, $a1, $a2
+		jr $ra
